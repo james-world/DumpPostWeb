@@ -14,7 +14,7 @@ namespace DumpPostWeb
 {
     public class Startup
     {
-        private static readonly CircularBuffer Posts = new CircularBuffer(3);
+        private static readonly CircularBuffer Posts = new CircularBuffer(20);
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -52,6 +52,7 @@ namespace DumpPostWeb
                 {
                     var content = new StringBuilder();
                     content.AppendFormat("DateTime:{0}<br>", DateTime.UtcNow);
+                    content.AppendFormat("Method:{0}<br>", context.Request.Method);
                     content.AppendFormat("Path:{0}<br>", context.Request.Path);
                     foreach (var header in context.Request.Headers)
                     {
